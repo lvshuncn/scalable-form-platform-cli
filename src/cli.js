@@ -26,7 +26,7 @@ if (program.config) {
   console.log(chalk.green('starting xform standalone server...'));
   const standaloneConfigFile = path.resolve(__dirname, './ecosystem.config.js');
   const crossENV = path.resolve(__dirname, '../node_modules/.bin/cross-env');
-  const pmEnv = path.resolve(__dirname, '../node_modules/.bin/pm2-runtime');
+  const pmEnv = path.resolve(__dirname, '../node_modules/.bin/pm2');
   const script = `${crossENV} CONFIG_PATH=${configFilePath} ${pmEnv} start ${standaloneConfigFile} --env production`;
   console.log(chalk.white(`${script}`));
   exec(script,
@@ -41,7 +41,8 @@ if (program.config) {
     });
 } else if (program.demo) {
   const standaloneConfigFile = path.resolve(__dirname, './ecosystem.config.js');
-  const script = `pm2 start ${standaloneConfigFile} --env production`;
+  const pm2 = path.resolve(__dirname, '../node_modules/.bin/pm2');
+  const script = `${pm2} start ${standaloneConfigFile} --env production`;
   console.log(chalk.white(`${script}`));
   exec(script,
     function (err, stdout, stderr) {
@@ -59,7 +60,8 @@ if (program.config) {
 } else if (program.kill) {
   console.log(chalk.green(`stopping xform standalone server...`));
   const standaloneConfigFile = path.resolve(__dirname, './ecosystem.config.js');
-  const script = `pm2 stop ${standaloneConfigFile} && pm2 delete ${standaloneConfigFile}`;
+  const pm2 = path.resolve(__dirname, '../node_modules/.bin/pm2');
+  const script = `${pm2} stop ${standaloneConfigFile} && ${pm2} delete ${standaloneConfigFile}`;
   console.log(chalk.white(`${script}`));
   exec(script,
     function (err, stdout, stderr) {

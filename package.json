@@ -1,6 +1,6 @@
 {
   "name": "scalable-form-platform-cli",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "standalone scalable-form server",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,10 @@
     "build:dir": "rimraf ./build && mkdir build",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.babel.js --colors"
   },
+  "files": [
+    "build",
+    "src"
+  ],
   "bin": {
     "scalable-form": "./src/cli.js"
   },
@@ -25,13 +29,13 @@
   },
   "homepage": "https://github.com/lvshuncn/scalable-form-platform-cli#readme",
   "dependencies": {
-    "scalable-form-server": "^0.0.4",
     "@babel/runtime": "^7.7.2",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
     "cross-env": "^6.0.3",
     "koa": "^2.11.0",
-    "pm2": "^4.1.2"
+    "pm2": "^4.1.2",
+    "scalable-form-server": "^0.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
